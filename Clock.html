@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="script.js">
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer_set</title>
+</head>
+
+<body>
+  <div class="box"> 
+    <h1> Same day dispatch </h1> 
+    <h2> Before 3PM (AEST)</h2>
+    <p id="timer"></p>
+  </div>
+ 
+  
+<Script>
+  setInterval(function() {
+  var d = new Date("Nov 28 2020, 14:59:59");
+  d.getHours();
+  d.getMinutes();
+  d.getSeconds(); 
+
+  // Get today's date and time
+  var now = new Date();
+  now.getHours();
+  now.getMinutes();
+  now.getSeconds();
+    
+  // Find the distance between now and the count down date
+  var hours =  d.getHours() - now.getHours();
+  var minutes = d.getMinutes() - now.getMinutes();
+  var second = d.getSeconds() - now.getSeconds();
+
+    
+  // If the count down is over, write some text 
+  if (hours >= 0 && hours < 5) {
+    document.getElementById("timer").innerHTML = hours + "h :"
+  + minutes + "m :" + second + "s";
+ } 
+
+  else (
+    document.getElementById("timer").innerHTML = "No More Dispatch For Today"
+  );
+ 
+}, 
+);
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<title>Captcha</title>
+<body onload="GenerateCaptcha();">
+<form action="Clock.html" method="post" style="width: 50%;">
+    <input name="inp-submit" type="hidden" value="" />
+ <div class="main-box">
+ <div class="h1">Got Questions? Let us help!</div>
+<div class="Fname">
+<div class="form-group">
+    <label for="inp-name">Name <small>(Required)</small></label> 
+    <input class="form-control" id="inp-first_name" name="inp-fname" required="" size="40" type="text" value="" /></div></div>
+
+<div class="form-group">
+    <label>Contact Number</label>
+     <input class="form-control" name="inp-phone" size="40" type="text" value=""/></div>
+
+<div class="form-group">
+    <label>Email Address <small>(Required)</small></label>
+     <input class="form-control" name="inp-email" required="" size="40" type="email" value="" /></div>
+
+<div class="form-group">
+    <label>Message <small>(Required)</small></label>
+    <textarea class="form-control col-xs-12 col-md-6" name="inp-msg" rows="5"></textarea></div>
+<div class="form-group">
+    <label for="inp-name">Enter the Captcha Text:<small>(Required)</small></label>
+     <div class="close">
+    <input type="text" onDrag=GenerateCaptcha(); onselectstart=GenerateCaptcha(); onpaste=GenerateCaptcha();  onCopy=GenerateCaptcha(); onCut=GenerateCaptcha(); 
+    id="txtCaptcha" disabled style="text-align: center; border: none; font-weight: bold; font-stretch: expanded; font-size: 20px; font-family: Brush Script MT" > </div>
+    <input class="form-control" id="txtCompare" required="" size="20" type="text" onchange="ValidCaptcha()";/></div>
+                 <!--Captcha part start-->
+ 
+<input type="button" id="btnrefresh" value="New Captcha" onclick="GenerateCaptcha();" />  <br>
+
+<div class="Button">
+<button class="btn btn-success" onclick= ValidCaptcha(); style="display:inline;" type= "inp-submit" value="Submit" id="btnValid" >Submit</button></p> </div>
+</div>
+<script type="text/javascript">  
+ function ValidCaptcha() {  
+        var str1 = removeSpaces(document.getElementById('txtCaptcha').value);  
+        var str2 = removeSpaces(document.getElementById('txtCompare').value);  
+
+        if (str1 != str2){
+            alert("Idiot You must be bot"); 
+            return  document.getElementById("txtCompare").value = null;
+        }
+       
+                
+    }  
+    
+    function GenerateCaptcha() {  
+        var chr1 = Math.ceil(Math.random() * 10) + '';  
+        var chr2 = Math.ceil(Math.random() * 10) + '';  
+        var chr3 = Math.ceil(Math.random() * 10) + '';  
+
+        var str = new Array(4).join().replace(/(.|$)/g, function () { return ((Math.random() * 36) | 0).toString(36)[Math.random() < .5 ? "toString" : "toUpperCase"](); });  
+        var captchaCode = str + chr1 + ' ' + chr2 + ' ' + chr3;  
+        document.getElementById("txtCaptcha").value = captchaCode  
+    }  
+
+
+    function removeSpaces(string) {  
+        return string.split(' ').join('');  
+    }  
+</script>  
+
+</form>
+</body>
+</head>
